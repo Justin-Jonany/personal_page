@@ -280,7 +280,9 @@ const projects: Project[] = [
     image: {
       src: "/images/projects/bioinformatics.png",
       alt: "Bioinformatics visualization of COVID-19 variants",
-      objectPosition: "center top"
+      objectPosition: "center top",
+      aspectClass: "aspect-[6/5]",
+      fit: "contain"
     }
   },
   {
@@ -294,7 +296,9 @@ const projects: Project[] = [
     link: "https://github.com/Justin-Jonany/IndoFoodNet",
     image: {
       src: "/images/projects/indofoodnet-metrics.png",
-      alt: "IndoFoodNet model performance dashboard"
+      alt: "IndoFoodNet model performance dashboard",
+      aspectClass: "aspect-[6/5]",
+      fit: "contain"
     }
   },
   {
