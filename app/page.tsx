@@ -1785,7 +1785,7 @@ export default function Home() {
                 <Github className="h-6 w-6" />
               </a>
               <a
-                href="https://linkedin.com/in/justin-jonany"
+                href="https://www.linkedin.com/in/justinjonany/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-slate-800 bg-slate-900/80 p-3 transition-colors hover:border-sky-500 hover:text-sky-400"
@@ -2133,7 +2133,7 @@ export default function Home() {
                 <Github className="h-7 w-7" />
               </a>
               <a
-                href="https://linkedin.com/in/justin-jonany"
+                href="https://www.linkedin.com/in/justinjonany/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-slate-800 bg-slate-900/80 p-3 text-slate-300 transition-colors hover:border-sky-500 hover:text-sky-400"
