@@ -173,7 +173,6 @@ type ProjectThemeKey = keyof typeof PROJECT_THEMES;
 type ProjectImage = {
   src: string;
   alt: string;
-  objectPosition?: string;
   aspectClass?: string;
   widthClass?: string;
   fit?: "cover" | "contain";
@@ -278,9 +277,8 @@ const projects: Project[] = [
     accent: "emerald",
     icon: Award,
     image: {
-      src: "/images/projects/bioinformatics.png",
+      src: "/images/projects/phylogenetic_tree.png",
       alt: "Bioinformatics visualization of COVID-19 variants",
-      objectPosition: "center top",
       aspectClass: "aspect-[6/5]",
       fit: "contain"
     }
@@ -419,8 +417,7 @@ const ProjectFeature = ({ project }: { project: Project }) => {
                     alt={project.image.alt}
                     fill
                     sizes="(min-width: 1024px) 360px, 100vw"
-                    className={project.image.fit === "contain" ? "object-contain" : "object-cover"}
-                    style={{ objectPosition: project.image.objectPosition ?? "center" }}
+                    className={`${project.image.fit === "contain" ? "object-contain" : "object-cover"} object-center`}
                   />
                 </div>
               </div>
