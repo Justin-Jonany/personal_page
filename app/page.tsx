@@ -170,6 +170,15 @@ const PROJECT_THEMES = {
 
 type ProjectThemeKey = keyof typeof PROJECT_THEMES;
 
+type ProjectImage = {
+  src: string;
+  alt: string;
+  objectPosition?: string;
+  aspectClass?: string;
+  widthClass?: string;
+  fit?: "cover" | "contain";
+};
+
 type Project = {
   id: string;
   title: string;
@@ -181,6 +190,7 @@ type Project = {
   link?: string;
   meta?: React.ReactNode;
   spotlightLabel?: string;
+  image?: ProjectImage;
 };
 
 type Experience = {
@@ -251,7 +261,13 @@ const projects: Project[] = [
     highlights: sciDigestHighlights,
     accent: "sky",
     icon: Code,
-    link: "https://github.com/Justin-Jonany/SciDigest"
+    link: "https://github.com/Justin-Jonany/SciDigest",
+    image: {
+      src: "/images/projects/scidigest-architecture.png",
+      alt: "SciDigest architecture diagram",
+      aspectClass: "aspect-[6/5]",
+      fit: "contain"
+    }
   },
   {
     id: "covid-phylo",
@@ -261,6 +277,11 @@ const projects: Project[] = [
     highlights: covidPhyloHighlights,
     accent: "emerald",
     icon: Award,
+    image: {
+      src: "/images/projects/bioinformatics.png",
+      alt: "Bioinformatics visualization of COVID-19 variants",
+      objectPosition: "center top"
+    }
   },
   {
     id: "indofoodnet",
@@ -270,7 +291,11 @@ const projects: Project[] = [
     highlights: indoFoodNetHighlights,
     accent: "indigo",
     icon: Award,
-    link: "https://github.com/Justin-Jonany/IndoFoodNet"
+    link: "https://github.com/Justin-Jonany/IndoFoodNet",
+    image: {
+      src: "/images/projects/indofoodnet-metrics.png",
+      alt: "IndoFoodNet model performance dashboard"
+    }
   },
   {
     id: "autopartner",
@@ -334,37 +359,39 @@ const ProjectFeature = ({ project }: { project: Project }) => {
     >
       <Card className="group relative overflow-hidden border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 shadow-2xl shadow-slate-900/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:border-sky-500/60 hover:shadow-[0_25px_60px_rgba(14,165,233,0.35)]">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-indigo-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        <CardContent className="relative flex flex-col gap-6 p-6 sm:gap-8 sm:p-8 lg:flex-row lg:items-center">
-          <div className="flex-1 space-y-4">
-            {project.spotlightLabel && (
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
-                {project.spotlightLabel}
-              </p>
-            )}
-            <h3 className={`text-3xl font-bold text-slate-100 sm:text-4xl ${theme.title}`}>{project.title}</h3>
-            <p className={`text-lg font-medium ${theme.date}`}>{project.date}</p>
-            <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech) => (
-                <Badge key={tech} className={`${theme.badge} px-4 py-2 text-sm`}>
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              {project.meta}
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`rounded-full border border-slate-800 bg-slate-900/70 p-3 text-slate-500 transition-colors duration-300 ${theme.link}`}
-                >
-                  <ExternalLink className="h-5 w-5" />
-                </a>
+        <CardContent className="relative flex flex-col gap-8 p-6 sm:p-8 lg:flex-row lg:items-stretch">
+          <div className="flex-1 space-y-6">
+            <div className="space-y-4">
+              {project.spotlightLabel && (
+                <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
+                  {project.spotlightLabel}
+                </p>
               )}
+              <h3 className={`text-3xl font-bold text-slate-100 sm:text-4xl ${theme.title}`}>
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-inherit transition-colors hover:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-600"
+                  >
+                    {project.title}
+                    <ExternalLink className="h-5 w-5" />
+                  </a>
+                ) : (
+                  project.title
+                )}
+              </h3>
+              <p className={`text-lg font-medium ${theme.date}`}>{project.date}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <Badge key={tech} className={`${theme.badge} px-4 py-2 text-sm`}>
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">{project.meta}</div>
             </div>
-          </div>
-          <div className="flex-1 min-w-0">
             <ul className="space-y-4 text-slate-300">
               {project.highlights.map((point, index) => (
                 <li key={index} className="flex items-start gap-3">
@@ -374,6 +401,27 @@ const ProjectFeature = ({ project }: { project: Project }) => {
               ))}
             </ul>
           </div>
+          {project.image && (
+            <div className={`w-full ${project.image.widthClass ?? "lg:w-5/12"}`}>
+              <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/70 p-3 shadow-inner shadow-slate-950/60">
+                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-500/5 via-transparent to-indigo-500/10" />
+                <div
+                  className={`relative w-full overflow-hidden rounded-2xl ${
+                    project.image.aspectClass ?? "aspect-[4/3]"
+                  }`}
+                >
+                  <Image
+                    src={project.image.src}
+                    alt={project.image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 360px, 100vw"
+                    className={project.image.fit === "contain" ? "object-contain" : "object-cover"}
+                    style={{ objectPosition: project.image.objectPosition ?? "center" }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </motion.div>
