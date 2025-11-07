@@ -544,7 +544,9 @@ const hobbies = [
     title: "Gym, Running, and Hiking",
     description:
       "Me and my friend hiking in Cold Springs, New York",
-    image: "/images/justin-hike.jpg"
+    image: "/images/justin-hike.jpg",
+    imagePosition: "center 60%",
+    imageScale: 1
   },
   {
     icon: ChefHat,
@@ -552,6 +554,8 @@ const hobbies = [
     description:
       "Weekends are for reverse-engineering restaurant dishes, replicating dishes from restaurants, and perfecting post-run recovery meals",
     image: "/images/justin-pad-thai.jpg",
+    imagePosition: "center",
+    imageScale: 1
   }
 ] as const;
 
