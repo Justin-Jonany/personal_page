@@ -1,6 +1,6 @@
 # Personal Website
 
-Minimal steps to run the Next.js app.
+This whole repo was vibe coded.
 
 ## Requirements
 - Node.js 18.17+ or 20+
