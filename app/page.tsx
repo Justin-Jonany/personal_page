@@ -1803,7 +1803,7 @@ export default function Home() {
               blending AI with the real world—all fueled by milk oolong.
             </p>
             <p className="text-lg text-slate-400">
-              My mornings: tea + research papers. My afternoons: shipping ML systems that actually work.
+              The text above is NOT llm-generated. I swear I use em dashes when I write. 
             </p>
             <div className="flex flex-col gap-4 md:flex-row">
               <Button
