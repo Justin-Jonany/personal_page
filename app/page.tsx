@@ -601,7 +601,7 @@ const hobbies = [
     icon: ChefHat,
     title: "Cooking",
     description:
-      "Weekends are for reverse-engineering restaurant dishes, replicating dishes from restaurants, and perfecting post-run recovery meals",
+      "When I miss home, I recreate some of my favorite dishes! In the picture, is a Chinese-Indonesian dish called kwetiaw goreng!",
     image: "/images/justin-pad-thai.jpg",
     imagePosition: "center",
     imageScale: 1
@@ -715,26 +715,6 @@ const formatTemperatureLabel = (temperatureCelsius?: number) => {
   return `${temperatureCelsius}\u00b0C`;
 };
 
-const currentExplorations = [
-  {
-    title: "Blockchain",
-    icon: Database,
-    paragraphs: [
-      "Currently diving into blockchain technology, decentralized systems, and how distributed ledgers plus consensus mechanisms can solve data integrity problems.",
-      "A big part studying smart contracts, Web3 infrastructure, and how decentralized rails could be integrated with data pipelines to make them more transparent and trustworthy."
-    ]
-  },
-  {
-    title: "Unsupervised ML Evaluation",
-    icon: Brain,
-    paragraphs: [
-      "The core challenge with unsupervised learning is the lack of ground truth, so I am researching creative out-of-the-box methods to evaluate them",
-      "This exploration grows out of insider trader detection at OSC, and to my current work in evaluating company search engine results.",
-      "The goal is to build statistically sound evaluation frameworks that make unsupervised models production-ready without eyeballing."
-    ]
-  }
-] as const;
-
 const courseTerms = [
   {
     term: "Fall 2022 · 1A",
@@ -742,7 +722,7 @@ const courseTerms = [
     courses: [
       { code: "CS 135", title: "Designing Functional Programs" },
       { code: "MATH 135", title: "Algebra for Honours Mathematics" },
-      { code: "MATH 137", title: "Calculus 1 for Honours Mathematics" }
+      { code: "MATH 137", title: "`Calculus` 1 for Honours Mathematics" }
     ]
   },
   {
@@ -1977,55 +1957,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="focus" className="relative bg-slate-950/60 px-4 py-16 sm:px-6 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-10 text-center text-5xl font-bold text-transparent bg-gradient-to-r from-sky-400 via-sky-300 to-indigo-400 bg-clip-text"
-          >
-            Current Focus
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mx-auto mb-16 max-w-3xl text-center text-lg text-slate-400"
-          >
-            Where I&apos;m investing deep work hours right now, from decentralized data integrity research to better ways
-            of validating unsupervised models in production.
-          </motion.p>
-          <div className="grid gap-8 md:grid-cols-2">
-            {currentExplorations.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="group relative h-full overflow-hidden border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 shadow-2xl shadow-slate-900/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:border-sky-500/60 hover:shadow-[0_25px_60px_rgba(14,165,233,0.35)]">
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-indigo-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <CardContent className="relative flex h-full flex-col gap-5 p-8">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-800">
-                        <item.icon className="h-7 w-7 text-sky-300" />
-                      </div>
-                      <h3 className="text-2xl font-semibold text-slate-100">{item.title}</h3>
-                    </div>
-                    <div className="space-y-3 text-slate-400">
-                      {item.paragraphs.map((paragraph, idx) => (
-                        <p key={idx}>{paragraph}</p>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
       <section id="coursework" className="relative bg-slate-950/70 px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           <motion.h2
@@ -2093,9 +2024,8 @@ export default function Home() {
             transition={{ duration: 0.4 }}
             className="mx-auto mb-16 max-w-3xl text-center text-lg text-slate-400"
           >
-            When I am not ML-ing, you can usually find me steeping new teas, chasing endorphins at the gym
-            or on long runs, and experimenting in the kitchen with bold flavors and recovery-friendly meals. I also love korean 
-            tv shows and alternative music!
+            When I am not working, you can find me sipping a cup of tea, while I watch korean 
+            dramas or hitting gym while l listen to alternative music!
           </motion.p>
           <div className="grid gap-6 md:grid-cols-3">
             {hobbies.map((hobby, index) => (
@@ -2160,15 +2090,6 @@ export default function Home() {
               >
                 <Mail className="mr-2 h-5 w-5" />
                 jjonany@uwaterloo.ca
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => window.open("tel:519-781-4977")}
-                className="rounded-full border-slate-800 px-8 py-6 text-lg text-slate-100 hover:bg-slate-900"
-              >
-                (519) 781-4977
               </Button>
             </div>
 
